@@ -20,7 +20,9 @@ const shufflePlayers = () => {
     rolling.value = true;
     selectedPlayer.value = null;
 
-    let rolls = Math.floor(Math.random() * (18 - 6 + 1)) + 6; // Random rolls (6-18)
+    const minimumRolls = 12;
+    const maximumRolls = minimumRolls + players.value.length * 2 - 1;
+    let rolls = Math.floor(Math.random() * (maximumRolls - minimumRolls + 1)) + minimumRolls; // Random rolls (6-18)
 
     let rollInterval = setInterval(() => {
         selectedPlayer.value = players.value[Math.floor(Math.random() * players.value.length)];
